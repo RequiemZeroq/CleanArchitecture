@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationServices.Interfaces\ApplicationServices.Interfaces.csproj" />
+    <ProjectReference Include="..\DataAccess.Interfaces\DataAccess.Interfaces.csproj" />
+    <ProjectReference Include="..\Delivery.Interfaces\Delivery.Interfaces.csproj" />
+    <ProjectReference Include="..\DomainServices.Interfaces\DomainServices.Interfaces.csproj" />
+    <ProjectReference Include="..\Email.Interfaces\Email.Interfaces.csproj" />
+    <ProjectReference Include="..\WebApp.Interfaces\WebApp.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

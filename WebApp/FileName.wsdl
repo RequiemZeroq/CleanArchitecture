@@ -1,0 +1,51 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             targetNamespace="http://example.com/stockquote.wsdl"
+			 xmlns:xsd ="http://www.w3.org/2001/XMLSchema"
+             name="StockQuote">
+
+	<!-- Типы данных -->
+	<types>
+		<xsd:schema targetNamespace="http://example.com/stockquote.xsd">
+			<xsd:element name="TradePriceRequest" type="xsd:string"/>
+			<xsd:element name="TradePriceResponse" type="xsd:float"/>
+		</xsd:schema>
+	</types>
+
+	<!-- Сообщения -->
+	<message name="GetLastTradePriceInput">
+		<part name="body" element="tns:TradePriceRequest"/>
+	</message>
+	<message name="GetLastTradePriceOutput">
+		<part name="body" element="tns:TradePriceResponse"/>
+	</message>
+
+	<!-- Интерфейс (порт) -->
+	<portType name="StockQuotePortType">
+		<operation name="GetLastTradePrice">
+			<input message="tns:GetLastTradePriceInput"/>
+			<output message="tns:GetLastTradePriceOutput"/>
+		</operation>
+	</portType>
+
+	<!-- Привязка к SOAP -->
+	<binding name="StockQuoteSoapBinding" type="tns:StockQuotePortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="GetLastTradePrice">
+			<soap:operation soapAction="http://example.com/GetLastTradePrice"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+
+	<!-- Описание сервиса -->
+	<service name="StockQuoteService">
+		<port name="StockQuotePort" binding="tns:StockQuoteSoapBinding">
+			<soap:address location="http://example.com/stockquote"/>
+		</port>
+	</service>
+</definitions>
